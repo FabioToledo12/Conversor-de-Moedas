@@ -1,3 +1,4 @@
+// PARA PEGAR OS DADOS DE UMA API NO NOSSO CASO A AWESOMEAPI PODE USAR O AXIOS VAMOS APRENDER MAIS PRA FRENTE ESSA BIBLIOTECA
 
     //MAPEAMENTO DAS CLASSES
     const convertButton = document.querySelector(".convert-button")
@@ -8,14 +9,21 @@
     const currencyValueConverted = document.querySelector(".currency-value-converted") // Valor Outras Moedas
     const currencySelect = document.querySelector(".current-select") //select das opções no html
 
-function convertValues(){
 
-    const dolarToday = 5.2
-    const euroToday = 6.2
-    const bitcoinToday = 183602.15
+
+//const convertValues = async () => {
+async function convertValues () {
+
+    const data = await fetch("https://economia.awesomeapi.com.br/last/USD-BRL,EUR-BRL,BTC-BRL").then( Response => Response.json() )
+
+    const dolarToday = data.USDBRL.high
+    const euroToday = data.EURBRL.high
+    const bitcoinToday = data.BTCBRL.high
     const libraToday = 6.13
 
-    
+    //console.log(data)
+
+console.log(data)
     //const convertedValue = (inputCurrencyValue / dolarToday)
 
     if (currencySelect.value == "dolar"){
